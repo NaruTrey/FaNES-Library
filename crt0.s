@@ -153,7 +153,7 @@ detectNTSC:
 	
 .export PPU_OAM_BUFFER_VAR, PALETTE_BUFFER_VAR, OAM_BUFFER_VAR
 PPU_OAM_BUFFER_VAR	= $0200
-PALETTE_BUFFER_VAR	= $01c0
+PALETTE_BUFFER_VAR	= $01C0
 OAM_BUFFER_VAR		= $0200
 
 nmi:
@@ -191,11 +191,6 @@ nmi:
 	    lda PALETTE_BUFFER_VAR + I
 	    sta PPU_DATA
 	.endrepeat
-	
-	; DEBUG TODO
-	;lda #100
-	;jsr _Graphics_skipFrames
-	; END DEBUG
 
 	.repeat 3, J
 	    lda PPU_DATA			;skip background color
