@@ -14,7 +14,10 @@ typedef unsigned int uint;
 #define PALETTE_SPRITE_3        0x18
 #define PALETTE_SPRITE_4        0x1B
 
+void fastcall setPalette(const uchar *data);
+void fastcall setPaletteBackground(const uchar *data);
 void fastcall setPaletteColor(uchar index, uchar color);
+void fastcall setPaletteSprites(const uchar *data);
 
 void fastcall onGraphics(void);
 
