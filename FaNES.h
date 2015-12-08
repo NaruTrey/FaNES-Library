@@ -19,6 +19,9 @@ void fastcall setPaletteBackground(const uchar *data);
 void fastcall setPaletteColor(uchar index, uchar color);
 void fastcall setPaletteSprites(const uchar *data);
 
+uchar fastcall newSprite(uchar x, uchar y, uchar charaster, uchar attributes, uchar spriteID);
+uchar fastcall setSpritePosition(uchar x, uchar y, uchar spriteID);
+
 void fastcall onGraphics(void);
 
 void fastcall waitFrame(void);
