@@ -1,5 +1,5 @@
 #!/bin/sh
-LIBRARY_NAME="FaNES"
+PATH=".:$PATH" . project.cfg
 
 rm build/ -R >> /dev/null 2>&1
 mkdir build/
