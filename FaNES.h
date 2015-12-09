@@ -5,7 +5,30 @@ typedef unsigned int uint;
 #define FALSE 	0
 #define NULL	0
 
+#define MSB(x)  (x >> 8)
+#define LSB(x)  (x & 0xFF)
+
+
 void fastcall copy(void *destination, void *source, uint length);
+
+#define UPDATE_NAMETABLE_HORIZONTAL		0x40
+#define UPDATE_NAMETABLE_VERTICAL		0x80
+#define UPDATE_NAMETABLE_END		    0xFF
+
+void fastcall updateNametable(uchar *buffer);
+
+#define PAD_PORT_PLAYER_1   0
+#define PAD_PORT_PLAYER_2	1
+#define PAD_BUTTON_A		0x01
+#define PAD_BUTTON_B		0x02
+#define PAD_BUTTON_SELECT	0x04
+#define PAD_BUTTON_START	0x08
+#define PAD_BUTTON_UP		0x10
+#define PAD_BUTTON_DOWN		0x20
+#define PAD_BUTTON_LEFT		0x40
+#define PAD_BUTTON_RIGHT	0x80
+
+uchar fastcall padPool(uchar port);
 
 #define PALETTE_BACKGROUND_1    0
 #define PALETTE_BACKGROUND_2    0x04

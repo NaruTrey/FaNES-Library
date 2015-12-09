@@ -3,9 +3,7 @@
 TILE_INDEX = TEMP_VAR	; word
 
 .segment "CODE"
-.import popax
-
-.include "../registers.inc"
+.import popax, PPU_ADDR, PPU_DATA
 
 .export _printNametableString
 ;void fastcall printNametableString(uint coordinates, uchar *string);
@@ -17,7 +15,7 @@ _printNametableString:
 	sta PPU_ADDR
 	ldy #0
 @1:
-    lda (TILE_INDEX),y
+    lda (TILE_INDEX), y
     beq @2
 	sta PPU_DATA
 	iny
