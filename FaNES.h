@@ -5,6 +5,8 @@ typedef unsigned int uint;
 #define FALSE 	0
 #define NULL	0
 
+void fastcall copy(void *destination, void *source, uint length);
+
 #define PALETTE_BACKGROUND_1    0
 #define PALETTE_BACKGROUND_2    0x04
 #define PALETTE_BACKGROUND_3    0x08
