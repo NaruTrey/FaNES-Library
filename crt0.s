@@ -27,6 +27,9 @@ PAD_STATEP_VAR: 				.res 2
 PAD_STATET_VAR:					.res 2
 TEMP_VAR:						.res 32
 
+.export __frameCounter
+__frameCounter = FRAME_CNT_VAR
+
 .segment "STARTUP"
 .export __STARTUP__: absolute = 1
 

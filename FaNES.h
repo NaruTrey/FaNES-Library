@@ -9,6 +9,8 @@ typedef unsigned int uint;
 #define LSB(x)  (x & 0xFF)
 
 
+void fastcall setSpritesBank(uchar bank);
+
 void fastcall copy(void *destination, void *source, uint length);
 
 #define UPDATE_NAMETABLE_HORIZONTAL		0x40
@@ -47,7 +49,15 @@ void fastcall setPaletteSprites(const uchar *data);
 uchar fastcall newSprite(uchar x, uchar y, uchar charaster, uchar attributes, uchar spriteID);
 uchar fastcall setSpritePosition(uchar x, uchar y, uchar spriteID);
 
+#define METASPRITE_END  128
+
+uchar fastcall newMetasprite(uchar x, uchar y, uchar spriteID, const uchar *data);
+uchar fastcall setMetaspritePosition(uchar x, uchar y, uchar spriteID, const uchar *data);
+
 void fastcall onGraphics(void);
+
+extern uchar _frameCounter;
+#pragma zpsym("_frameCounter");
 
 void fastcall waitFrame(void);
 
