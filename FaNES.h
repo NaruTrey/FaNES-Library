@@ -19,6 +19,13 @@ void fastcall copy(void *destination, void *source, uint length);
 
 void fastcall updateNametable(uchar *buffer);
 
+#define NAMETABLE_A		0x2000
+#define NAMETABLE_B		0x2400
+#define NAMETABLE_C		0x2800
+#define NAMETABLE_D		0x2c00
+
+void fastcall unpackNametableRLE(const uchar *data, uint nametable);
+
 #define PAD_PORT_PLAYER_1   0
 #define PAD_PORT_PLAYER_2	1
 #define PAD_BUTTON_A		0x01
