@@ -38,6 +38,7 @@ void fastcall unpackNametableRLE(const uchar *data, uint nametable);
 #define PAD_BUTTON_RIGHT	0x80
 
 uchar fastcall padPool(uchar port);
+uchar fastcall padPush(uchar port);
 
 #define PALETTE_BACKGROUND_1    0
 #define PALETTE_BACKGROUND_2    0x04
