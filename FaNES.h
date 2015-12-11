@@ -63,6 +63,7 @@ uchar fastcall setSpritePosition(uchar x, uchar y, uchar spriteID);
 uchar fastcall newMetasprite(uchar x, uchar y, uchar spriteID, const uchar *data);
 uchar fastcall setMetaspritePosition(uchar x, uchar y, uchar spriteID, const uchar *data);
 
+void fastcall offGraphics(void);
 void fastcall onGraphics(void);
 
 extern uchar _frameCounter;
