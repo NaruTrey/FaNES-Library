@@ -25,10 +25,16 @@ PPU_SCROLL_Y_VAR:               .res 1
 PAD_STATE_VAR:                  .res 2
 PAD_STATEP_VAR:                 .res 2
 PAD_STATET_VAR:                 .res 2
-TEMP_VAR:                       .res 32
+TEMP_VAR:                       .res 16
 
 .export __frameCounter
 __frameCounter = FRAME_CNT_VAR
+
+.if .defined(PALETTE_BRIGHT)
+.export PALETTE_BACKGROUND_POINTER_VAR, PALETTE_SPRITES_POINTER_VAR
+PALETTE_BACKGROUND_POINTER_VAR: .res 2
+PALETTE_SPRITES_POINTER_VAR:    .res 2
+.endif
 
 .segment "STARTUP"
 .export __STARTUP__: absolute = 1
@@ -44,6 +50,10 @@ __frameCounter = FRAME_CNT_VAR
 PPU_OAM_BUFFER_VAR  = $0200
 PALETTE_BUFFER_VAR  = $01C0
 OAM_BUFFER_VAR      = $0200
+
+.if .defined(PALETTE_BRIGHT)
+.import paletteBrightTableL, paletteBrightTableH
+.endif
 
 start:
 reset:
@@ -114,6 +124,16 @@ clearRAM:
 
     jsr initlib
 
+    .if .defined(PALETTE_BRIGHT)
+        ldx #$04
+        lda paletteBrightTableL, x
+        sta <PALETTE_BACKGROUND_POINTER_VAR
+        sta <PALETTE_SPRITES_POINTER_VAR
+        lda paletteBrightTableH, x
+        sta <PALETTE_BACKGROUND_POINTER_VAR + 1
+        sta <PALETTE_SPRITES_POINTER_VAR + 1
+    .endif
+
     lda #%10000000
     sta <PPU_CTRL_VAR
     sta PPU_CTRL
@@ -139,11 +159,6 @@ nmi:
     pha
     tya
     pha
-
-    lda #$3F
-    sta PPU_ADDR
-    lda #$04
-    sta PPU_ADDR
     
     lda <PPU_MASK_VAR
     and #%00011000
@@ -165,23 +180,33 @@ nmi:
     lda #$3F
     sta PPU_ADDR
     stx PPU_ADDR
-    .repeat 4, I
-        lda PALETTE_BUFFER_VAR + I
-        sta PPU_DATA
-    .endrepeat
-    .repeat 3, J
-        .repeat 4, I
-            lda PALETTE_BUFFER_VAR + 4 + (J * 4) + I
+    .if .defined(PALETTE_BRIGHT)
+        .repeat 16, I
+            ldy PALETTE_BUFFER_VAR + I
+            lda (PALETTE_BACKGROUND_POINTER_VAR), y
             sta PPU_DATA
         .endrepeat
-    .endrepeat
-    .repeat 4, J
-        lda PPU_DATA
-        .repeat 3,I
-            lda PALETTE_BUFFER_VAR + 17 + (J * 4) + I
+        .repeat 4, J
+            lda PPU_DATA
+            .repeat 3, I
+                ldy PALETTE_BUFFER_VAR + 17 + (J * 4) + I
+                lda (PALETTE_SPRITES_POINTER_VAR), y
+                sta PPU_DATA
+            .endrepeat
+        .endrepeat
+    .else
+        .repeat 16, I
+            lda PALETTE_BUFFER_VAR + I
             sta PPU_DATA
         .endrepeat
-    .endrepeat
+        .repeat 4, J
+            lda PPU_DATA
+            .repeat 3, I
+                lda PALETTE_BUFFER_VAR + 17 + (J * 4) + I
+                sta PPU_DATA
+            .endrepeat
+        .endrepeat
+    .endif  ; .defined(PALETTE_BRIGHT)
 @updVRAM:
     lda <FRAME_WAIT_VAR
     beq @skipUpd

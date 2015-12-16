@@ -2,6 +2,7 @@
 .import FRAME_WAIT_VAR, FRAME_CNT_VAR
 
 .segment "CODE"
+.import PPU_ADDR
 
 .export _waitFrame
 ;void fastcall waitFrame(void);
@@ -10,8 +11,8 @@ _waitFrame:
 	sta <FRAME_WAIT_VAR
 	lda <FRAME_CNT_VAR
 @1:
-    nop
 	cmp <FRAME_CNT_VAR
+    nop
 	beq @1
 	rts
 	

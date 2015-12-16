@@ -6,7 +6,7 @@ mkdir build/
 
 for asmFile in `find . -type f -name "*.s"`
 do
-	ca65 $asmFile -o build/`basename -s .s $asmFile`.o
+	ca65 $asmFile -o build/`basename -s .s $asmFile`.o -D "$LIBRARY_OPTIONS"
 done
 
 rm out/"$LIBRARY_NAME".lib >> /dev/null 2>&1

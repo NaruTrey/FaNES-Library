@@ -59,9 +59,12 @@ uchar fastcall padPool(uchar port);
 uchar fastcall padPush(uchar port);
 
 void fastcall setPalette(const uchar *data);
+void fastcall setPaletteBright(uchar level);
 void fastcall setPaletteBackground(const uchar *data);
+void fastcall setPaletteBackgroundBright(uchar level);
 void fastcall setPaletteColor(uchar index, uchar color);
 void fastcall setPaletteSprites(const uchar *data);
+void fastcall setPaletteSpritesBright(uchar level);
 
 uchar fastcall getRandomUchar(void);
 
