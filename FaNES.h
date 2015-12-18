@@ -68,6 +68,10 @@ void fastcall setPaletteSpritesBright(uchar level);
 
 uchar fastcall getRandomUchar(void);
 
+void fastcall setBackgroundScroll(uchar x, uchar y);
+void fastcall setBackgroundScrollX(uchar x);
+void fastcall setBackgroundScrollY(uchar y);
+
 uchar fastcall newSprite(uchar x, uchar y, uchar charaster, uchar attributes, uchar spriteID);
 uchar fastcall setSpritePosition(uchar x, uchar y, uchar spriteID);
 
