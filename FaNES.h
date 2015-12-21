@@ -17,6 +17,11 @@ typedef unsigned int uint;
 #define NAMETABLE_C		0x2800
 #define NAMETABLE_D		0x2c00
 
+#define ACTIVE_NAMETABLE_A		0
+#define ACTIVE_NAMETABLE_B		1
+#define ACTIVE_NAMETABLE_C		2
+#define ACTIVE_NAMETABLE_D		3
+
 #define PAD_PORT_PLAYER_1   0
 #define PAD_PORT_PLAYER_2	1
 #define PAD_BUTTON_A		0x01
@@ -52,6 +57,7 @@ void fastcall setSpritesBank(uchar bank);
 void fastcall copy(void *destination, void *source, uint length);
 
 void fastcall printNametableString(uint coordinates, uchar *string);
+void fastcall setNametableActive(uchar nametable);
 void fastcall updateNametable(uchar *buffer);
 void fastcall unpackNametableRLE(const uchar *data, uint nametable);
 
