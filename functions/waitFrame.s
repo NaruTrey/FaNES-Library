@@ -1,18 +1,16 @@
-.segment "ZEROPAGE"
-.import FRAME_WAIT_VAR, FRAME_CNT_VAR
-
-.segment "CODE"
+.code
+.importzp FRAME_WAIT_VAR, FRAME_CNT_VAR
 .import PPU_ADDR
 
 .export _waitFrame
 ;void fastcall waitFrame(void);
 _waitFrame:
-	lda #1
-	sta <FRAME_WAIT_VAR
-	lda <FRAME_CNT_VAR
+    lda #1
+    sta <FRAME_WAIT_VAR
+    lda <FRAME_CNT_VAR
 @1:
-	cmp <FRAME_CNT_VAR
+    cmp <FRAME_CNT_VAR
     nop
-	beq @1
-	rts
-	
+    beq @1
+    rts
+
