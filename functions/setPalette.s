@@ -1,5 +1,6 @@
 .zeropage
 .import PALETTE_UPDATE_VAR, TEMP_VAR
+
 POINTER = TEMP_VAR
 LENGTH = POINTER + 2
 
