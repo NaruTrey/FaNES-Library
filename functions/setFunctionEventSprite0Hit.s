@@ -1,6 +1,6 @@
 .code
-.importzp TEMP_VAR, PPU_CTRL_VAR
-.import pushax, callax, popa, PPU_SCROLL, PPU_STATUS, PPU_CTRL
+.importzp TEMP_VAR
+.import PPU_STATUS
 
 .export _setFunctionEventSprite0Hit
 ;void fastcall setFunctionEventSprite0Hit(void *function);
