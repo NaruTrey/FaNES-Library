@@ -1,8 +1,55 @@
-.segment "ZEROPAGE"
-.import TEMP_VAR, PPU_SCROLL_X_VAR, PPU_SCROLL_Y_VAR
+.code
+.importzp TEMP_VAR, PPU_SCROLL_X_VAR, PPU_SCROLL_Y_VAR
+.import popa, popax, pushax, tosumoda0, tosudiva0, _setNametableActive
 
-.segment "CODE"
-.import popa
+.export _setBackgroundScrollI
+;void fastcall setBackgroundScrollI(uint x, uint y);
+_setBackgroundScrollI:
+    jsr pushax
+    jsr pushax
+    lda #$F0
+    jsr tosumoda0
+    sta <PPU_SCROLL_Y_VAR
+    jsr popax
+    jsr pushax
+    lda #$F0
+    jsr tosudiva0
+    and #$01
+    asl a
+    sta <TEMP_VAR
+    jsr popax
+    sta <PPU_SCROLL_X_VAR
+    txa
+    and #$01
+    adc <TEMP_VAR
+    jmp _setNametableActive
+
+
+.export _setBackgroundScrollIX
+;void fastcall setBackgroundScrollIX(uint x);
+_setBackgroundScrollIX:
+    sta <PPU_SCROLL_X_VAR
+    txa
+    and #$01
+    jmp _setNametableActive
+
+
+.export _setBackgroundScrollIY
+;void fastcall setBackgroundScrollIY(uint y);
+_setBackgroundScrollIY:
+    jsr pushax
+    jsr pushax
+    lda #$F0
+    jsr tosumoda0
+    sta <PPU_SCROLL_Y_VAR
+    jsr popax
+    jsr pushax
+    lda #$F0
+    jsr tosudiva0
+    and #$01
+    asl a
+    jmp _setNametableActive
+
 
 .export _setBackgroundScroll
 ;void fastcall setBackgroundScroll(uchar x, uchar y);
