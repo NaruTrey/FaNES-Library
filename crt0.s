@@ -94,29 +94,20 @@ clearRAM:
     inx
     bne @1
 
-    lda #$0F
-    ldx #0
-;TODO Удалить clearPaletteBuffer после добавления в примерах установки цвета фона
-@clearPaletteBuffer:
-    sta PALETTE_BUFFER_VAR, x
-    inx
-    cpx #$20
-    bne @clearPaletteBuffer
-    stx <PALETTE_UPDATE_VAR
-    
+clearOAMbuffer:
     ldx #0
     lda #$FF
-@clearOAMbuffer:
+@1:
     sta OAM_BUFFER_VAR, x
     inx
     inx
     inx
     inx
-    bne @clearOAMbuffer
-    
+    bne @1
+
     jsr zerobss
     jsr copydata
-    
+
     lda #<(__RAM_START__ + __RAM_SIZE__)
     sta sp
     lda #>(__RAM_START__ + __RAM_SIZE__)
@@ -159,7 +150,7 @@ nmi:
     pha
     tya
     pha
-    
+
     lda <PPU_MASK_VAR
     and #%00011000
     bne @doUpdate
@@ -211,7 +202,7 @@ nmi:
     lda <FRAME_WAIT_VAR
     beq @skipUpd
     stx <FRAME_WAIT_VAR
-    
+
     lda <NAMETABLE_UPDATE_ENABLED_VAR
     beq @skipUpd
 
