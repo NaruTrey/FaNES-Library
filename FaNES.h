@@ -52,6 +52,8 @@ typedef unsigned int uint;
 extern uchar _frameCounter;
 #pragma zpsym("_frameCounter");
 
+void __fastcall__ setFunctionEventSprite0Hit(void *function);
+
 void __fastcall__ setSpritesBank(uchar bank);
 
 void __fastcall__ copy(void *destination, void *source, uint length);
