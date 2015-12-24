@@ -11,6 +11,6 @@ _setFunctionEventSprite0Hit:
 @2:
     bit PPU_STATUS
     bvc @2
-    sta     TEMP_VAR
-    stx     TEMP_VAR + 1
-    jmp     (TEMP_VAR)
+    sta TEMP_VAR
+    stx TEMP_VAR + 1
+    jmp (TEMP_VAR)
