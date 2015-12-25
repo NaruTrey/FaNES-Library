@@ -118,22 +118,22 @@ clearOAMbuffer:
     .if .defined(PALETTE_BRIGHT)
         ldx #$04
         lda paletteBrightTableL, x
-        sta <PALETTE_BACKGROUND_POINTER_VAR
-        sta <PALETTE_SPRITES_POINTER_VAR
+        sta PALETTE_BACKGROUND_POINTER_VAR
+        sta PALETTE_SPRITES_POINTER_VAR
         lda paletteBrightTableH, x
-        sta <PALETTE_BACKGROUND_POINTER_VAR + 1
-        sta <PALETTE_SPRITES_POINTER_VAR + 1
+        sta PALETTE_BACKGROUND_POINTER_VAR + 1
+        sta PALETTE_SPRITES_POINTER_VAR + 1
     .endif
 
     lda #%10000000
-    sta <PPU_CTRL_VAR
+    sta PPU_CTRL_VAR
     sta PPU_CTRL
     lda #%00000110
-    sta <PPU_MASK_VAR
+    sta PPU_MASK_VAR
 waitSync:
-    lda <FRAME_CNT_VAR
+    lda FRAME_CNT_VAR
 @1:
-    cmp <FRAME_CNT_VAR
+    cmp FRAME_CNT_VAR
     nop
     beq @1
 
@@ -162,12 +162,12 @@ nmi:
     lda #>PPU_OAM_BUFFER_VAR
     sta PPU_OAM_DMA
 
-    lda <PALETTE_UPDATE_VAR
+    lda PALETTE_UPDATE_VAR
     bne @updPal
     jmp @updVRAM
 
 @updPal:
-    stx <PALETTE_UPDATE_VAR
+    stx PALETTE_UPDATE_VAR
     lda #$3F
     sta PPU_ADDR
     stx PPU_ADDR
@@ -199,11 +199,11 @@ nmi:
         .endrepeat
     .endif  ; .defined(PALETTE_BRIGHT)
 @updVRAM:
-    lda <FRAME_WAIT_VAR
+    lda FRAME_WAIT_VAR
     beq @skipUpd
-    stx <FRAME_WAIT_VAR
+    stx FRAME_WAIT_VAR
 
-    lda <NAMETABLE_UPDATE_ENABLED_VAR
+    lda NAMETABLE_UPDATE_ENABLED_VAR
     beq @skipUpd
 
 @flush_vram_update_nmi:
@@ -223,7 +223,7 @@ nmi:
     jmp @updName
 @updNotSeq:
     tax
-    lda <PPU_CTRL_VAR
+    lda PPU_CTRL_VAR
     cpx #$80
     bcc @updHorzSeq
     cpx #$ff
@@ -250,7 +250,7 @@ nmi:
     sta PPU_DATA
     dex
     bne @updNameLoop
-    lda <PPU_CTRL_VAR
+    lda PPU_CTRL_VAR
     sta PPU_CTRL
     jmp @updName
 @skipUpd:
@@ -258,20 +258,20 @@ nmi:
     sta PPU_ADDR
     sta PPU_ADDR
 
-    lda <PPU_SCROLL_X_VAR
+    lda PPU_SCROLL_X_VAR
     sta PPU_SCROLL
-    lda <PPU_SCROLL_Y_VAR
+    lda PPU_SCROLL_Y_VAR
     sta PPU_SCROLL
 
-    lda <PPU_CTRL_VAR
+    lda PPU_CTRL_VAR
     sta PPU_CTRL
 
 @skipAll:
 
-    lda <PPU_MASK_VAR
+    lda PPU_MASK_VAR
     sta PPU_MASK
 
-    inc <FRAME_CNT_VAR
+    inc FRAME_CNT_VAR
 
     pla
     tay
