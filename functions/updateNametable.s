@@ -6,10 +6,10 @@
 .export _updateNametable
 ;void fastcall updateNametable(uchar *buffer);
 _updateNametable:
-    sta <NAMETABLE_UPDATE_ADDRESS_VAR + 0
-    stx <NAMETABLE_UPDATE_ADDRESS_VAR + 1
-    ora <NAMETABLE_UPDATE_ADDRESS_VAR + 1
-    sta <NAMETABLE_UPDATE_ENABLED_VAR
+    sta NAMETABLE_UPDATE_ADDRESS_VAR + 0
+    stx NAMETABLE_UPDATE_ADDRESS_VAR + 1
+    ora NAMETABLE_UPDATE_ADDRESS_VAR + 1
+    sta NAMETABLE_UPDATE_ENABLED_VAR
     rts
 _flush_vram_update_nmi:
     ldy #0
@@ -28,7 +28,7 @@ _flush_vram_update_nmi:
     jmp @updName
 @updNotSeq:
     tax
-    lda <PPU_CTRL_VAR
+    lda PPU_CTRL_VAR
     cpx #$80
     bcc @updHorzSeq
     cpx #$FF
@@ -55,7 +55,7 @@ _flush_vram_update_nmi:
     sta PPU_DATA
     dex
     bne @updNameLoop
-    lda <PPU_CTRL_VAR
+    lda PPU_CTRL_VAR
     sta PPU_CTRL
     jmp @updName
 @updDone:

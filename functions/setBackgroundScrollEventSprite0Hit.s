@@ -12,26 +12,26 @@ ADDR2_VAR = ADDR1_VAR + 1
 .export _setBackgroundScrollEventSprite0Hit
 ;void fastcall setBackgroundScrollEventSprite0Hit(uchar x, uchar y);
 _setBackgroundScrollEventSprite0Hit:
-    sta <SY_VAR
+    sta SY_VAR
     jsr popa
-    sta <SX_VAR
-    lda <PPU_CTRL_VAR
+    sta SX_VAR
+    lda PPU_CTRL_VAR
     and #%00000011
-    sta <ADDR1_VAR
-    lda <SY_VAR
+    sta ADDR1_VAR
+    lda SY_VAR
     asl
     asl
     and #%11100000
-    sta <ADDR2_VAR
-    lda <SX_VAR
+    sta ADDR2_VAR
+    lda SX_VAR
     lsr
     lsr
     lsr
-    ora <ADDR2_VAR
-    sta <ADDR2_VAR
-    ldx <SX_VAR
-    ldy <SY_VAR
-    lda <ADDR1_VAR
+    ora ADDR2_VAR
+    sta ADDR2_VAR
+    ldx SX_VAR
+    ldy SY_VAR
+    lda ADDR1_VAR
 @1:
     bit PPU_STATUS
     bvs @1
@@ -41,6 +41,6 @@ _setBackgroundScrollEventSprite0Hit:
     sta PPU_ADDR
     sty PPU_SCROLL
     stx PPU_SCROLL
-    lda <ADDR2_VAR
+    lda ADDR2_VAR
     sta PPU_ADDR
     rts

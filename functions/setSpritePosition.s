@@ -12,11 +12,11 @@ _setSpritePosition:
     sta OAM_BUFFER_VAR + 0, x
     lda (sp), y
     sta OAM_BUFFER_VAR + 3, x
-    lda <sp
+    lda sp
     clc
     adc #2
-    sta <sp
+    sta sp
     bcc @1
-    inc <sp + 1
+    inc sp + 1
 @1:
     rts

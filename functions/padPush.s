@@ -9,6 +9,6 @@ _padPush:
     jsr _padPool
     pla
     tax
-    lda <PAD_STATET_VAR, x
+    lda PAD_STATET_VAR, x
     rts
 

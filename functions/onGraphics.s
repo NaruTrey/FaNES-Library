@@ -5,7 +5,7 @@
 .export _onGraphics
 ;void fastcall onGraphics(void);
 _onGraphics:
-    lda <PPU_MASK_VAR
+    lda PPU_MASK_VAR
     ora #%00011000
-    sta <PPU_MASK_VAR
+    sta PPU_MASK_VAR
     jmp _waitFrame

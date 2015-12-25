@@ -1,10 +1,10 @@
 .zeropage
 .import TEMP_VAR
 
-RLE_LOW = TEMP_VAR
-RLE_HIGH = RLE_LOW + 1
-RLE_TAG = RLE_HIGH + 2
-RLE_BYTE = RLE_TAG + 3
+RLE_LOW_VAR = TEMP_VAR
+RLE_HIGH_VAR = RLE_LOW_VAR + 1
+RLE_TAG_VAR = RLE_HIGH_VAR + 2
+RLE_BYTE_VAR = RLE_TAG_VAR + 3
 
 .code
 .import popax, PPU_ADDR, PPU_DATA
@@ -16,34 +16,34 @@ _unpackNametableRLE:
     sta PPU_ADDR
     jsr popax
     tay
-    stx <RLE_HIGH
+    stx RLE_HIGH_VAR
     lda #0
-    sta <RLE_LOW
-    lda (RLE_LOW),y
-    sta <RLE_TAG
+    sta RLE_LOW_VAR
+    lda (RLE_LOW_VAR),y
+    sta RLE_TAG_VAR
     iny
     bne @1
-    inc <RLE_HIGH
+    inc RLE_HIGH_VAR
 @1:
-    lda (RLE_LOW),y
+    lda (RLE_LOW_VAR),y
     iny
     bne @11
-    inc <RLE_HIGH
+    inc RLE_HIGH_VAR
 @11:
-    cmp <RLE_TAG
+    cmp RLE_TAG_VAR
     beq @2
     sta PPU_DATA
-    sta <RLE_BYTE
+    sta RLE_BYTE_VAR
     bne @1
 @2:
-    lda (RLE_LOW),y
+    lda (RLE_LOW_VAR),y
     beq @4
     iny
     bne @21
-    inc <RLE_HIGH
+    inc RLE_HIGH_VAR
 @21:
     tax
-    lda <RLE_BYTE
+    lda RLE_BYTE_VAR
 @3:
     sta PPU_DATA
     dex

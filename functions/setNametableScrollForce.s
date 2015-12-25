@@ -11,24 +11,24 @@ SY_VAR = TEMP_VAR + 1
 .export _setBackgroundScrollForce
 ;void fastcall setBackgroundScrollForce(uchar x, uchar y);
 _setBackgroundScrollForce:
-    sta <SY_VAR
+    sta SY_VAR
     jsr popa
-    sta <SX_VAR
-    lda <PPU_CTRL_VAR
+    sta SX_VAR
+    lda PPU_CTRL_VAR
     and #%00000011
     sta PPU_ADDR
-    lda <SY_VAR
+    lda SY_VAR
     sta PPU_SCROLL
     asl
     asl
     and #%11100000
-    ldx <SX_VAR
-    sta <TEMP_VAR
+    ldx SX_VAR
+    sta TEMP_VAR
     txa
     lsr
     lsr
     lsr
-    ora <TEMP_VAR
+    ora TEMP_VAR
     stx PPU_SCROLL
     sta PPU_ADDR
     rts

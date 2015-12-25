@@ -14,10 +14,10 @@
 _setPaletteBackgroundBright:
     tax
     lda paletteBrightTableL, x
-    sta <PALETTE_BACKGROUND_POINTER_VAR
+    sta PALETTE_BACKGROUND_POINTER_VAR
     lda paletteBrightTableH, x
-    sta <PALETTE_BACKGROUND_POINTER_VAR + 1
-    sta <PALETTE_UPDATE_VAR
+    sta PALETTE_BACKGROUND_POINTER_VAR + 1
+    sta PALETTE_UPDATE_VAR
     rts
 
 .export _setPaletteSpritesBright
@@ -25,10 +25,10 @@ _setPaletteBackgroundBright:
 _setPaletteSpritesBright:
     tax
     lda paletteBrightTableL, x
-    sta <PALETTE_SPRITES_POINTER_VAR
+    sta PALETTE_SPRITES_POINTER_VAR
     lda paletteBrightTableH, x
-    sta <PALETTE_SPRITES_POINTER_VAR + 1
-    sta <PALETTE_UPDATE_VAR
+    sta PALETTE_SPRITES_POINTER_VAR + 1
+    sta PALETTE_UPDATE_VAR
     rts
 
 .export _setPaletteBright
@@ -36,12 +36,12 @@ _setPaletteSpritesBright:
 _setPaletteBright:
     tax
     lda paletteBrightTableL, x
-    sta <PALETTE_BACKGROUND_POINTER_VAR
-    sta <PALETTE_SPRITES_POINTER_VAR
+    sta PALETTE_BACKGROUND_POINTER_VAR
+    sta PALETTE_SPRITES_POINTER_VAR
     lda paletteBrightTableH, x
-    sta <PALETTE_BACKGROUND_POINTER_VAR + 1
-    sta <PALETTE_SPRITES_POINTER_VAR + 1
-    sta <PALETTE_UPDATE_VAR
+    sta PALETTE_BACKGROUND_POINTER_VAR + 1
+    sta PALETTE_SPRITES_POINTER_VAR + 1
+    sta PALETTE_UPDATE_VAR
     rts
 
 .RODATA
