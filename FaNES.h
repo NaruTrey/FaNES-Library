@@ -85,6 +85,7 @@ void __fastcall__ setBackgroundScrollIY(uint y);
 void __fastcall__ setBackgroundScrollForce(uchar x, uchar y);
 void __fastcall__ setBackgroundScrollForceI(uint x, uint y);
 void __fastcall__ setBackgroundScrollEventSprite0Hit(uchar x, uchar y);
+void __fastcall__ setBackgroundScrollEventSprite0HitI(uint x, uint y);
 
 uchar __fastcall__ newSprite(uchar x, uchar y, uchar charaster, uchar attributes, uchar spriteID);
 uchar __fastcall__ setSpritePosition(uchar x, uchar y, uchar spriteID);
