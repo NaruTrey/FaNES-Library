@@ -11,7 +11,8 @@
 .export PPU_CTRL_VAR, PPU_MASK_VAR, PALETTE_UPDATE_VAR
 .export FRAME_WAIT_VAR, FRAME_CNT_VAR, NAMETABLE_UPDATE_ENABLED_VAR
 .export NAMETABLE_UPDATE_ADDRESS_VAR, PPU_SCROLL_X_VAR, PPU_SCROLL_Y_VAR
-.export PAD_STATE_VAR, PAD_STATEP_VAR, PAD_STATET_VAR, TEMP_VAR
+.export PAD_STATE_CHECK_VAR, PAD_STATE_VAR, PAD_STATEP_VAR, PAD_STATET_VAR
+.export TEMP_VAR
 
 PPU_CTRL_VAR:                   .res 1
 PPU_MASK_VAR:                   .res 1
@@ -22,6 +23,7 @@ NAMETABLE_UPDATE_ENABLED_VAR:   .res 1
 NAMETABLE_UPDATE_ADDRESS_VAR:   .res 1
 PPU_SCROLL_X_VAR:               .res 1
 PPU_SCROLL_Y_VAR:               .res 1
+PAD_STATE_CHECK_VAR:            .res 1
 PAD_STATE_VAR:                  .res 2
 PAD_STATEP_VAR:                 .res 2
 PAD_STATET_VAR:                 .res 2
@@ -257,6 +259,8 @@ nmi:
     lda #0
     sta PPU_ADDR
     sta PPU_ADDR
+
+    sta PAD_STATE_CHECK_VAR
 
     lda PPU_SCROLL_X_VAR
     sta PPU_SCROLL

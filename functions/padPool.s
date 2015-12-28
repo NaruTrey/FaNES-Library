@@ -1,5 +1,5 @@
 .zeropage
-.import TEMP_VAR, PAD_STATE_VAR, PAD_STATET_VAR, PAD_STATEP_VAR
+.import TEMP_VAR, PAD_STATE_CHECK_VAR, PAD_STATE_VAR, PAD_STATET_VAR, PAD_STATEP_VAR
 
 PAD_BUFFER_VAR = TEMP_VAR + 2
 
@@ -9,6 +9,10 @@ PAD_BUFFER_VAR = TEMP_VAR + 2
 .export _padPool
 ;uchar fastcall padPool(uchar port);
 _padPool:
+    ldy #0
+    cpy PAD_STATE_CHECK_VAR
+    bne @justReturn
+    inc PAD_STATE_CHECK_VAR
     tay
     ldx #0
 @padPollPort:
@@ -41,4 +45,9 @@ _padPool:
     sta PAD_STATET_VAR, y
     txa
     sta PAD_STATEP_VAR, y
+    rts
+
+@justReturn:
+    tax
+    lda PAD_STATEP_VAR, x
     rts
