@@ -8,7 +8,6 @@ _padPush:
     ldy #0
     cpy PAD_STATE_CHECK_VAR
     bne @1
-    inc PAD_STATE_CHECK_VAR
     pha
     jsr _padPool
     pla
