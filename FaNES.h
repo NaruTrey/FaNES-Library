@@ -8,22 +8,23 @@ typedef unsigned int uint;
 #define MSB(x)  (x >> 8)
 #define LSB(x)  (x & 0xFF)
 
-#define UPDATE_NAMETABLE_HORIZONTAL     0x40
-#define UPDATE_NAMETABLE_VERTICAL       0x80
-#define UPDATE_NAMETABLE_END            0xFF
+#define NAMETABLE_UPDATE_HORIZONTAL     0x40
+#define NAMETABLE_UPDATE_VERTICAL       0x80
+#define NAMETABLE_UPDATE_END            0xFF
 
 #define NAMETABLE_A     0x2000
 #define NAMETABLE_B     0x2400
 #define NAMETABLE_C     0x2800
 #define NAMETABLE_D     0x2c00
 
-#define ACTIVE_NAMETABLE_A      0
-#define ACTIVE_NAMETABLE_B      1
-#define ACTIVE_NAMETABLE_C      2
-#define ACTIVE_NAMETABLE_D      3
+#define NAMETABLE_ACTIVE_A      0
+#define NAMETABLE_ACTIVE_B      1
+#define NAMETABLE_ACTIVE_C      2
+#define NAMETABLE_ACTIVE_D      3
 
-#define PAD_PORT_PLAYER_1   0
-#define PAD_PORT_PLAYER_2   1
+#define PAD_PORT_1          0
+#define PAD_PORT_2          1
+
 #define PAD_BUTTON_A        0x01
 #define PAD_BUTTON_B        0x02
 #define PAD_BUTTON_SELECT   0x04
@@ -49,13 +50,13 @@ typedef unsigned int uint;
 #define NAMETABLE_C_POSITION(x, y)  (0x2800 | ((y << 5) | x))
 #define NAMETABLE_D_POSITION(x, y)  (0x2C00 | ((y << 5) | x))
 
-#define BANK_SPRITE_A       0
-#define BANK_SPRITE_B       8
-#define BANK_BACKGROUND_A   0
-#define BANK_BACKGROUND_B   16
+#define SPRITES_BANK_A      0
+#define SPRITES_BANK_B      8
+#define BACKGROUND_BANK_A   0
+#define BACKGROUND_BANK_B   16
 
-#define SPRITE_SIZE_8x8     0
-#define SPRITE_SIZE_8x16    32
+#define SPRITES_SIZE_8x8     0
+#define SPRITES_SIZE_8x16    32
 
 extern uchar _frameCounter;
 #pragma zpsym("_frameCounter");
@@ -96,7 +97,7 @@ void __fastcall__ setBackgroundScrollForceI(uint x, uint y);
 void __fastcall__ setBackgroundScrollEventSprite0Hit(uchar x, uchar y);
 void __fastcall__ setBackgroundScrollEventSprite0HitI(uint x, uint y);
 
-uchar __fastcall__ newSprite(uchar x, uchar y, uchar charaster, uchar attributes, uchar spriteID);
+uchar __fastcall__ newSprite(uchar x, uchar y, uchar character, uchar attributes, uchar spriteID);
 uchar __fastcall__ setSpritePosition(uchar x, uchar y, uchar spriteID);
 
 void __fastcall__ setSpritesSize(uchar size);
