@@ -54,6 +54,9 @@ typedef unsigned int uint;
 #define BANK_BACKGROUND_A   0
 #define BANK_BACKGROUND_B   16
 
+#define SPRITE_SIZE_8x8     0
+#define SPRITE_SIZE_8x16    32
+
 extern uchar _frameCounter;
 #pragma zpsym("_frameCounter");
 
@@ -95,6 +98,8 @@ void __fastcall__ setBackgroundScrollEventSprite0HitI(uint x, uint y);
 
 uchar __fastcall__ newSprite(uchar x, uchar y, uchar charaster, uchar attributes, uchar spriteID);
 uchar __fastcall__ setSpritePosition(uchar x, uchar y, uchar spriteID);
+
+void __fastcall__ setSpritesSize(uchar size);
 
 uchar __fastcall__ newMetasprite(uchar x, uchar y, uchar spriteID, const uchar *data);
 uchar __fastcall__ setMetaspritePosition(uchar x, uchar y, uchar spriteID, const uchar *data);
