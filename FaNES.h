@@ -49,12 +49,18 @@ typedef unsigned int uint;
 #define NAMETABLE_C_POSITION(x, y)  (0x2800 | ((y << 5) | x))
 #define NAMETABLE_D_POSITION(x, y)  (0x2C00 | ((y << 5) | x))
 
+#define BANK_SPRITE_A       0
+#define BANK_SPRITE_B       8
+#define BANK_BACKGROUND_A   0
+#define BANK_BACKGROUND_B   16
+
 extern uchar _frameCounter;
 #pragma zpsym("_frameCounter");
 
 void __fastcall__ setFunctionEventSprite0Hit(void *function);
 
-void __fastcall__ setSpritesBank(uchar bank);
+void __fastcall__ setBankBackground(uchar bank);
+void __fastcall__ setBankSprites(uchar bank);
 
 void __fastcall__ copy(void *destination, void *source, uint length);
 
