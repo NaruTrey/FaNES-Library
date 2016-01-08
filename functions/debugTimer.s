@@ -14,223 +14,254 @@
 
 .export _startDebugTimer0
 ;void fastcall startDebugTimer0(void);
-_startDebugTimer0:
+.proc _startDebugTimer0
     sta DEBUG_TIMER0_START
     rts
-
+.endproc
 
 .export _startDebugTimer1
 ;void fastcall startDebugTimer1(void);
-_startDebugTimer1:
+.proc _startDebugTimer1
     sta DEBUG_TIMER1_START
     rts
+.endproc
 
 
 .export _startDebugTimer2
 ;void fastcall startDebugTimer2(void);
-_startDebugTimer2:
+.proc _startDebugTimer2
     sta DEBUG_TIMER2_START
     rts
+.endproc
 
 
 .export _startDebugTimer3
 ;void fastcall startDebugTimer3(void);
-_startDebugTimer3:
+.proc _startDebugTimer3
     sta DEBUG_TIMER3_START
     rts
+.endproc
 
 
 .export _startDebugTimer4
 ;void fastcall startDebugTimer4(void);
-_startDebugTimer4:
+.proc _startDebugTimer4
     sta DEBUG_TIMER4_START
     rts
+.endproc
 
 
 .export _startDebugTimer5
 ;void fastcall startDebugTimer5(void);
-_startDebugTimer5:
+.proc _startDebugTimer5
     sta DEBUG_TIMER5_START
     rts
+.endproc
 
 
 .export _startDebugTimer6
 ;void fastcall startDebugTimer6(void);
-_startDebugTimer6:
+.proc _startDebugTimer6
     sta DEBUG_TIMER6_START
     rts
+.endproc
 
 
 .export _startDebugTimer7
 ;void fastcall startDebugTimer7(void);
-_startDebugTimer7:
+.proc _startDebugTimer7
     sta DEBUG_TIMER7_START
     rts
+.endproc
 
 
 .export _startDebugTimer8
 ;void fastcall startDebugTimer8(void);
-_startDebugTimer8:
+.proc _startDebugTimer8
     sta DEBUG_TIMER8_START
     rts
+.endproc
 
 
 .export _startDebugTimer9
 ;void fastcall startDebugTimer9(void);
-_startDebugTimer9:
+.proc _startDebugTimer9
     sta DEBUG_TIMER9_START
     rts
+.endproc
 
 
 .export _startDebugTimerA
 ;void fastcall startDebugTimerA(void);
-_startDebugTimerA:
+.proc _startDebugTimerA
     sta DEBUG_TIMERA_START
     rts
+.endproc
 
 
 .export _startDebugTimerB
 ;void fastcall startDebugTimerB(void);
-_startDebugTimerB:
+.proc _startDebugTimerB
     sta DEBUG_TIMERB_START
     rts
+.endproc
 
 
 .export _startDebugTimerC
 ;void fastcall startDebugTimerC(void);
-_startDebugTimerC:
+.proc _startDebugTimerC
     sta DEBUG_TIMERC_START
     rts
+.endproc
 
 
 .export _startDebugTimerD
 ;void fastcall startDebugTimerD(void);
-_startDebugTimerD:
+.proc _startDebugTimerD
     sta DEBUG_TIMERD_START
     rts
+.endproc
 
 
 .export _startDebugTimerE
 ;void fastcall startDebugTimerE(void);
-_startDebugTimerE:
+.proc _startDebugTimerE
     sta DEBUG_TIMERE_START
     rts
+.endproc
 
 
 .export _startDebugTimerF
 ;void fastcall startDebugTimerF(void);
-_startDebugTimerF:
+.proc _startDebugTimerF
     sta DEBUG_TIMERF_START
     rts
+.endproc
 
 
 .export _stopDebugTimer0
 ;void fastcall stopDebugTimer0(void);
-_stopDebugTimer0:
+.proc _stopDebugTimer0
     sta DEBUG_TIMER0_STOP
     rts
+.endproc
 
 
 .export _stopDebugTimer1
 ;void fastcall stopDebugTimer1(void);
-_stopDebugTimer1:
+.proc _stopDebugTimer1
     sta DEBUG_TIMER1_STOP
     rts
+.endproc
 
 
 .export _stopDebugTimer2
 ;void fastcall stopDebugTimer2(void);
-_stopDebugTimer2:
+.proc _stopDebugTimer2
     sta DEBUG_TIMER2_STOP
     rts
+.endproc
 
 
 .export _stopDebugTimer3
 ;void fastcall stopDebugTimer3(void);
-_stopDebugTimer3:
+.proc _stopDebugTimer3
     sta DEBUG_TIMER3_STOP
     rts
+.endproc
 
 
 .export _stopDebugTimer4
 ;void fastcall stopDebugTimer4(void);
-_stopDebugTimer4:
+.proc _stopDebugTimer4
     sta DEBUG_TIMER4_STOP
     rts
+.endproc
 
 
 .export _stopDebugTimer5
 ;void fastcall stopDebugTimer5(void);
-_stopDebugTimer5:
+.proc _stopDebugTimer5
     sta DEBUG_TIMER5_STOP
     rts
+.endproc
 
 
 .export _stopDebugTimer6
 ;void fastcall stopDebugTimer6(void);
-_stopDebugTimer6:
+.proc _stopDebugTimer6
     sta DEBUG_TIMER6_STOP
     rts
+.endproc
 
 
 .export _stopDebugTimer7
 ;void fastcall stopDebugTimer7(void);
-_stopDebugTimer7:
+.proc _stopDebugTimer7
     sta DEBUG_TIMER7_STOP
     rts
+.endproc
 
 
 .export _stopDebugTimer8
 ;void fastcall stopDebugTimer8(void);
-_stopDebugTimer8:
+.proc _stopDebugTimer8
     sta DEBUG_TIMER8_STOP
     rts
+.endproc
 
 
 .export _stopDebugTimer9
 ;void fastcall stopDebugTimer9(void);
-_stopDebugTimer9:
+.proc _stopDebugTimer9
     sta DEBUG_TIMER9_STOP
     rts
+.endproc
 
 
 .export _stopDebugTimerA
 ;void fastcall stopDebugTimerA(void);
-_stopDebugTimerA:
+.proc _stopDebugTimerA
     sta DEBUG_TIMERA_STOP
     rts
+.endproc
 
 
 .export _stopDebugTimerB
 ;void fastcall stopDebugTimerB(void);
-_stopDebugTimerB:
+.proc _stopDebugTimerB
     sta DEBUG_TIMERB_STOP
     rts
+.endproc
 
 
 .export _stopDebugTimerC
 ;void fastcall stopDebugTimerC(void);
-_stopDebugTimerC:
+.proc _stopDebugTimerC
     sta DEBUG_TIMERC_STOP
     rts
+.endproc
 
 
 .export _stopDebugTimerD
 ;void fastcall stopDebugTimerD(void);
-_stopDebugTimerD:
+.proc _stopDebugTimerD
     sta DEBUG_TIMERD_STOP
     rts
+.endproc
 
 
 .export _stopDebugTimerE
 ;void fastcall stopDebugTimerE(void);
-_stopDebugTimerE:
+.proc _stopDebugTimerE
     sta DEBUG_TIMERE_STOP
     rts
+.endproc
 
 
 .export _stopDebugTimerF
 ;void fastcall stopDebugTimerF(void);
-_stopDebugTimerF:
+.proc _stopDebugTimerF
     sta DEBUG_TIMERF_STOP
     rts
+.endproc
