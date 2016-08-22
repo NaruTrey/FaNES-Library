@@ -45,10 +45,10 @@ typedef unsigned int uint;
 
 #define METASPRITE_END  128
 
-#define NAMETABLE_A_POSITION(x, y)  (0x2000 | ((y << 5) | x))
-#define NAMETABLE_B_POSITION(x, y)  (0x2400 | ((y << 5) | x))
-#define NAMETABLE_C_POSITION(x, y)  (0x2800 | ((y << 5) | x))
-#define NAMETABLE_D_POSITION(x, y)  (0x2C00 | ((y << 5) | x))
+#define NAMETABLE_A_POSITION(x, y)  (NAMETABLE_A | ((y << 5) | x))
+#define NAMETABLE_B_POSITION(x, y)  (NAMETABLE_B | ((y << 5) | x))
+#define NAMETABLE_C_POSITION(x, y)  (NAMETABLE_C | ((y << 5) | x))
+#define NAMETABLE_D_POSITION(x, y)  (NAMETABLE_D | ((y << 5) | x))
 
 #define SPRITES_BANK_A      0
 #define SPRITES_BANK_B      8
